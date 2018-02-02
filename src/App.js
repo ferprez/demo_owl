@@ -1,41 +1,49 @@
 import React, { Component } from 'react';
 import { createStore, applyMiddleware } from 'redux';
-import { Provider, connect } from "react-redux";
+import { Provider } from "react-redux";
 import ReduxThunk from 'redux-thunk';
 import ReduxLogger from 'redux-logger';
-
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import darkBaseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
-import getMuiTheme from "material-ui/styles/getMuiTheme";
-import RaisedButton from "material-ui/RaisedButton";
+import { createMuiTheme } from "material-ui/styles";
+import green from "material-ui/colors/green";
+import createHistory from "history/createBrowserHistory";
+import { routerMiddleware } from 'react-router-redux';
 
-import Login from './components/login';
-import Home from './components/home';
 import reducers from './reducers';
+import Router from './config/Router';
 
-import { 
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+const history = createHistory();
+const middleware = routerMiddleware(history);
 
 const store = createStore(
   reducers,
   {},
-  applyMiddleware(ReduxThunk, ReduxLogger)
+  applyMiddleware(middleware, ReduxThunk, ReduxLogger)
 );
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: "#757ce8",
+      main: green[500],
+      dark: green[600],
+      contrastText: "#fff"
+    },
+    secondary: {
+      light: "#ff7961",
+      main: "#f44336",
+      dark: "#ba000d",
+      contrastText: "#000"
+    }
+  }
+});
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <MuiThemeProvider>
-          <Router>
-            <div style={{ flex: 1 }}>
-              <Route exact path="/" component={Login} />
-              <Route exact path="/home" component={Home} />
-            </div>
-          </Router>
+        <MuiThemeProvider theme={theme}>
+          <Router history={history} />
         </MuiThemeProvider>
       </Provider>
     );

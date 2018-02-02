@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import AppBar from "material-ui/AppBar";
-import Drawer from "material-ui/Drawer";
-import MenuItem from "material-ui/MenuItem";
+import { tokenExpired } from "../../actions";
+import Layout from '../common/Layout';
+import Style from './style';
 
 class Home extends Component {
   
-  state = {open: false};
-  handleToggle = () => this.setState({open: !this.state.open});
+  state = {};
 
   render() {
     return (
-      <div>
-        <AppBar
-          title="Demo"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          onLeftIconButtonClick={this.handleToggle}
-        />
-        <Drawer open={this.state.open}>
-          <MenuItem>Menu Item</MenuItem>
-          <MenuItem>Menu Item 2</MenuItem>
-        </Drawer>
-      </div>
+      <Layout>
+        <p>asdfasdfasdfasdf</p>
+      </Layout>
     );
   }
+};
+
+const mapStateToProps = state => {
+  const { token, isAuth } = state.auth;
+  return { token, isAuth };
 }
 
-export default Home;
+export default connect(mapStateToProps, {
+  tokenExpired
+})(Home);

@@ -1,21 +1,31 @@
+import green from "material-ui/colors/green";
+
 export default {
   Container: {
-    height: "100vh",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    backgroundColor: "#efefef"
+    minHeight: "100vh",
+    display: "flex"
   },
   HeaderStyle: {
-    backgroundColor: "#00BCD4",
+    backgroundColor: green[500],
     height: 250,
     width: "100%",
     position: "absolute"
   },
+  LogoStyle: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  FormStyle: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around"
+  },
   CardStyle: {
-    height: 500,
-    width: 700,
-    alignSelf: "center"
+    alignSelf: "center",
+    margin: "auto",
+    width: "400px",
+    zIndex: 1
   },
   CardBody: {
     display: "flex",
@@ -24,11 +34,9 @@ export default {
   },
   ActionsStyle: {
     display: "flex",
-    width: "70%",
+    justifyContent: "space-between",
     alignItems: "center",
-    justifyContent: "space-around",
-    position: 'relative',
-    top: 15,
-    bottom: 10
+    marginTop: 10,
+    marginBottom: 10
   }
 };
