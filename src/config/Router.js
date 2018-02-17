@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import LandingPage from '../components/landing-page';
 import Login from "../components/login";
 import Home from "../components/home";
+import Registro from '../components/registro';
 
 const PrivateRoute  = ({ component: Component, isAuth, ...rest }) => (
   <Route {...rest} 
@@ -24,6 +25,7 @@ class Router extends Component {
         <Switch>
           {/* <Route exact path="/" component={LandingPage} /> */}
           <Route exact path="/" component={Login} />
+          <Route exact path="/registro" component={Registro} />
           <PrivateRoute exact path="/home" isAuth={isAuth} component={Home} />
           <Route render={() => <Redirect to="/" />}/>
         </Switch>
