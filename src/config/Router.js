@@ -22,8 +22,8 @@ class Router extends Component {
     return (
       <ConnectedRouter history={history}>
         <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/login" component={Login} />
+          {/* <Route exact path="/" component={LandingPage} /> */}
+          <Route exact path="/" component={Login} />
           <PrivateRoute exact path="/home" isAuth={isAuth} component={Home} />
           <Route render={() => <Redirect to="/" />}/>
         </Switch>
