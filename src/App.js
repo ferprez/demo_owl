@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-import { createStore, applyMiddleware } from 'redux';
+import React, { Component } from "react";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import ReduxThunk from 'redux-thunk';
-import ReduxLogger from 'redux-logger';
+import ReduxThunk from "redux-thunk";
+import ReduxLogger from "redux-logger";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { createMuiTheme } from "material-ui/styles";
 import green from "material-ui/colors/green";
+import indigo from "material-ui/colors/indigo";
 import createHistory from "history/createBrowserHistory";
-import { routerMiddleware } from 'react-router-redux';
+import { routerMiddleware } from "react-router-redux";
+import { ParallaxProvider } from "react-scroll-parallax";
 
-import reducers from './reducers';
-import Router from './config/Router';
+import reducers from "./reducers";
+import Router from "./config/Router";
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
@@ -25,8 +27,8 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: "#757ce8",
-      main: green[500],
-      dark: green[600],
+      main: indigo[500],
+      dark: indigo[600],
       contrastText: "#fff"
     },
     secondary: {
@@ -42,9 +44,11 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <MuiThemeProvider theme={theme}>
-          <Router history={history} />
-        </MuiThemeProvider>
+        <ParallaxProvider>
+          <MuiThemeProvider theme={theme}>
+            <Router history={history} />
+          </MuiThemeProvider>
+        </ParallaxProvider>
       </Provider>
     );
   }

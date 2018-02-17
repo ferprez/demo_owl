@@ -1,0 +1,67 @@
+.header-parallax-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.header-parallax-image {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.header-parallax-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .header {
+  display: flex;
+  align-self: center;
+}
+
+.navbar {
+  display: inherit;
+  width: 90vw;
+  justify-content: space-between;
+}
+
+.links-bar {
+  display: inherit;
+  margin-right: 20px;
+}
+
+.toolbar {
+  justify-content: flex-end;
+}
+
+.nav-list {
+  display: inherit;
+  margin-right: 40px;
+}
+
+.nav-list-link {
+  list-style-type: none;
+  margin: 10px;
+}
+
+.nav-list-link a{
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-list-link a:hover {
+  border-bottom: 5px solid #000;
+  padding-bottom: 5px;
+}
+
+.nav-list-link a:active {
+  color: blue;
+} */

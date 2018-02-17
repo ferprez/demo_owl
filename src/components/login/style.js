@@ -1,4 +1,5 @@
 import green from "material-ui/colors/green";
+import indigo from "material-ui/colors/indigo";
 
 export default {
   Container: {
@@ -6,7 +7,7 @@ export default {
     display: "flex"
   },
   HeaderStyle: {
-    backgroundColor: green[500],
+    backgroundColor: indigo[500],
     height: 250,
     width: "100%",
     position: "absolute"

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
+import LandingPage from '../components/landing-page';
 import Login from "../components/login";
 import Home from "../components/home";
 
@@ -15,14 +16,14 @@ const PrivateRoute  = ({ component: Component, isAuth, ...rest }) => (
   /> 
 );
 
-
 class Router extends Component {
   render() {
     const { history, isAuth } = this.props;
     return (
       <ConnectedRouter history={history}>
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/home" isAuth={isAuth} component={Home} />
           <Route render={() => <Redirect to="/" />}/>
         </Switch>
