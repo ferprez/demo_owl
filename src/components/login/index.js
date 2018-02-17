@@ -12,7 +12,7 @@ import { CircularProgress } from "material-ui/Progress";
 import { FormGroup, FormControlLabel } from "material-ui/Form";
 import Toaster from "../common/Toaster";
 
-import { usernameChanged, passwordChanged, doLogin } from "../../actions/";
+import { usernameChanged, passwordChanged, doLogin, redirectRegistro } from "../../actions/";
 
 class Login extends Component {
   state = {
@@ -33,6 +33,10 @@ class Login extends Component {
     const { email, password } = this.props;
     this.props.doLogin({ email, password }, this.handleSnackClick);
   };
+
+  redirigirRegistro = () => {
+    this.props.redirectRegistro();
+  }
 
   renderButton = () => {
     if (this.props.loading) {
@@ -77,7 +81,7 @@ class Login extends Component {
                 <FormGroup row>
                   <FormControlLabel control={<Checkbox checked={this.state.checkedA} value="checkedA" />} label="Recordarme" />
                 </FormGroup>
-                <Button style={{ minWidth: "50%" }}>Registrarse</Button>
+                <Button style={{ minWidth: "50%" }} onClick={this.redirigirRegistro}>Registrarse</Button>
               </div>
               {this.renderButton()}
             </form>
@@ -97,5 +101,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   usernameChanged,
   passwordChanged,
-  doLogin
+  doLogin,
+  redirectRegistro
 })(Login);

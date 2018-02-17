@@ -40,6 +40,12 @@ export const apellidoChanged = text => {
   }
 };
 
+export const redirectRegistro = () => {
+  return (dispatch) => {
+    dispatch(push("/registro"));
+  }
+};
+
 export const doRegistro = ({ nombre, apellido, email, password}) => {
   return (dispatch) => {
     let firstName = nombre;
